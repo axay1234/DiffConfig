@@ -120,8 +120,8 @@ def run_diff():
         messagebox.showerror("Error", "Please select both old and new configuration files.")
         return
 
-    # Build the output file name using the current date.
-    date_str = datetime.now().strftime("%Y%m%d")
+    # Build the output file name using the current date and time.
+    date_str = datetime.now().strftime("%Y%m%d_%H%M%S")
     # The output file will be saved in the same folder as the .py script.
     output_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), f"diffConfig_{date_str}.txt")
     
