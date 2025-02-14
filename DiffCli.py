@@ -52,7 +52,10 @@ def diff_trees(old_tree, new_tree, indent=0):
     diff_lines = []  # List to store the resulting diff lines.
 
     # Iterate over every unique key (command) from both trees.
-    for key in set(old_tree) | set(new_tree):  # The union of keys.
+    # for key in set(old_tree) | set(new_tree):  # The union of keys.
+    # Instead of iterating over an unordered set, create a sorted list of keys.
+    all_keys = sorted(set(old_tree.keys()) | set(new_tree.keys()))
+    for key in all_keys:
         # Case 1: Key exists in the old tree but not in the new tree.
         if key in old_tree and key not in new_tree:
             diff_lines.append("  " * indent + f"- {key}") # Mark as removed
